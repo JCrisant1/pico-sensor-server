@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template_string
+import os
 
 app = Flask(__name__)
 
@@ -18,3 +19,8 @@ def update():
     sensor_data["temperature"] = data.get("temperature", "N/A")
     sensor_data["humidity"] = data.get("humidity", "N/A")
     return "OK"
+
+# Fix is here:
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
