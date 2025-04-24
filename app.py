@@ -17,8 +17,9 @@ def home():
 def update():
     data = request.json
     sensor_data["temperature"] = data.get("temperature", "N/A")
-    sensor_data["humidity"] = data.get("humidity", "N/A")
+    sensor_data["humidity"] = "N/A"  # Or remove if not displayed
     return "OK"
+
 
 # Fix is here:
 if __name__ == "__main__":
